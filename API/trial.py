@@ -1,19 +1,25 @@
 import mysql.connector
 from mysql.connector import Error
 
-try:
-    conn = mysql.connector.connect(
-        host="127.0.0.1", port=3306, user="root", password="935645", database="testdb"
-    )
-    cursor = conn.cursor()
-    cursor.execute("SELECT VERSION()")
-    print(cursor.fetchone())
-    # parameterized query example
-    cursor.execute("SELECT * FROM users WHERE id = %s", (1,))
-    row = cursor.fetchone()
-    print(row)
-finally:
-    if cursor:
+def get_connection():
+    try:
+        conn = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="root",
+            password="pass",
+            database="sportsdb"
+        )
+        return conn
+    except Error as e:  
+        print("Error while connecting to MySQL", e)
+        return None
+
+if __name__ == "__main__":
+    conn = get_connection()
+    if conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT VERSION()")
+        print("Database version:", cursor.fetchone())
         cursor.close()
-    if conn and conn.is_connected():
         conn.close()
