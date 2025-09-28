@@ -1,0 +1,185 @@
+.players-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.players-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.players-header h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.players-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+  font-weight: 900;
+}
+
+/* Tabs at top-left */
+.players-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.players-tabs button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.players-tabs button.active {
+  background-color: #6c7bff;
+  color: white;
+}
+
+.players-tabs button:hover {
+  background-color: #b0b0b0;
+}
+
+.players-main {
+  display: flex;
+  justify-content: center;
+}
+
+.players-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+/* Card styling */
+.players-cards .card {
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Input & select styling */
+.players-cards input, .players-cards select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  margin-bottom: 8px;
+  /* background-color: white; */
+  color: white;
+}
+
+/* Buttons */
+.players-cards button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #6c7bff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.players-cards button:hover {
+  background-color: #5561d1;
+}
+
+.delete-btn {
+  background-color: #ff6c6c;
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.delete-btn:hover {
+  background-color: #d14747;
+}
+
+/* Table for players */
+.players-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.players-table th, .players-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Container for Add Player Card */
+.add-player-card {
+  width: 600px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: white;
+  margin: 0 auto; /* center horizontally */
+}
+
+/* Inputs & select inside the card */
+.add-player-card input,
+.add-player-card select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  width: 100%;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.add-player-card input:focus,
+.add-player-card select:focus {
+  border-color: #6c7bff;
+  background: rgba(255,255,255,0.1);
+}
+
+/* File input container */
+.add-player-card .file-input {
+  margin-top: 8px;
+}
+
+/* Buttons inside the card */
+.add-player-card button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #6c7bff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-player-card button:hover {
+  background-color: #5561d1;
+}
+
+/* Optional: smaller gap for multiple fields in one row */
+.add-player-card .row {
+  display: flex;
+  gap: 10px;
+}
+
+.add-player-card select option {
+  background-color: white; /* Background of each option */
+  color: #000; /* Text color of options */
+}

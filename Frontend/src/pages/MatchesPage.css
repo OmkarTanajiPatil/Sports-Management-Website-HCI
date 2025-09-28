@@ -1,0 +1,148 @@
+.matches-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.matches-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.matches-header h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.matches-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-top: 4px;
+  font-weight: 900;
+}
+
+/* Tabs */
+.matches-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.matches-tabs button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.matches-tabs button.active {
+  background-color: #6c7bff;
+  color: white;
+}
+
+.matches-tabs button:hover {
+  background-color: #b0b0b0;
+}
+
+.matches-main {
+  display: flex;
+  justify-content: center;
+}
+
+.matches-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card styling */
+.matches-cards .card {
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Schedule Match Card */
+.schedule-card {
+  width: 600px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: white;
+  margin: 0 auto;
+}
+
+.schedule-card input,
+.schedule-card select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  width: 100%;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.schedule-card input:focus,
+.schedule-card select:focus {
+  border-color: #6c7bff;
+  background: rgba(255,255,255,0.1);
+}
+
+.schedule-card .row {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons */
+.schedule-card button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #6c7bff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.schedule-card button:hover {
+  background-color: #5561d1;
+}
+
+/* Table */
+.matches-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.matches-table th, .matches-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.matches-table button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #6c7bff;
+  color: white;
+  cursor: pointer;
+}
+
+.matches-table button:hover {
+  background-color: #5561d1;
+}

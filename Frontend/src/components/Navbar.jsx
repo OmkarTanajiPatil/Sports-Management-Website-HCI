@@ -1,16 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './Navbar.css'; // Make sure this CSS file contains your CSS
 
-export default function Navbar(){
+export default function Navbar() {
   return (
-    <div className="nav container">
-      <div className="brand">SportSphere</div>
-      <NavLink to="/" end>Dashboard</NavLink>
-      <NavLink to="/sports">Sports</NavLink>
-      <NavLink to="/teams">Teams</NavLink>
-      <NavLink to="/players">Players</NavLink>
-      <NavLink to="/matches">Matches</NavLink>
-      <NavLink to="/results">Results</NavLink>
-    </div>
+    <nav className="navbar">
+      <div className="navbar-logo">SportSphere</div>
+      <ul className="navbar-links">
+        <li><NavLink to="/" end>Dashboard</NavLink></li>
+        <li><NavLink to="/sports">Sports</NavLink></li>
+        <li><NavLink to="/teams">Teams</NavLink></li>
+        <li><NavLink to="/players">Players</NavLink></li>
+        <li><NavLink to="/matches">Matches</NavLink></li>
+        <li><NavLink to="/results">Results</NavLink></li>
+      </ul>
+    </nav>
   );
 }
