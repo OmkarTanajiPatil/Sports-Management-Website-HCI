@@ -3,7 +3,7 @@ from mysql.connector import Error
 
 try:
     conn = mysql.connector.connect(
-        host="127.0.0.1", port=3306, user="root", password="", database="testdb"
+        host="127.0.0.1", port=3306, user="root", password="935645", database="testdb"
     )
     cursor = conn.cursor()
     cursor.execute("SELECT VERSION()")
