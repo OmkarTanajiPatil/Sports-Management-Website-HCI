@@ -6,8 +6,11 @@ import Loading from '../components/Loading';
 export default function PlayersPage() {
     const [teams, setTeams] = useState([]);
     const [players, setPlayers] = useState([]);
+    const [filteredPlayers, setFilteredPlayers] = useState([]);
     const [form, setForm] = useState({ teamId: '', firstName: '', middleName: '', lastName: '', dob: '', phNumber: '' });
     const [file, setFile] = useState(null);
+    const [search, setSearch] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => { loadTeams(); }, []);
 
@@ -23,12 +26,17 @@ export default function PlayersPage() {
 
     const fetchPlayers = async teamId => {
         if (!teamId) return setPlayers([]);
+        setLoading(true);
         try {
             const res = await api.get('/api/players', { params: { teamId } });
             setPlayers(res.data || []);
+            setFilteredPlayers(res.data || []);
         } catch (e) {
             console.error(e);
             setPlayers([]);
+            setFilteredPlayers([]);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -46,7 +54,6 @@ export default function PlayersPage() {
 
             await api.post('/api/players', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
 
-            // Reset form & refresh
             setForm({ teamId: '', firstName: '', middleName: '', lastName: '', dob: '', phNumber: '' });
             setFile(null);
             fetchPlayers(form.teamId);
@@ -56,11 +63,36 @@ export default function PlayersPage() {
         }
     };
 
+    const deletePlayer = async id => {
+        if (!window.confirm('Are you sure you want to delete this player?')) return;
+        try {
+            await api.delete(`/api/players/${id}`);
+            fetchPlayers(form.teamId);
+        } catch (e) {
+            console.error(e);
+            alert('Failed to delete player');
+        }
+    };
+
+    const filterPlayers = () => {
+        if (!search) return setFilteredPlayers(players);
+        const filtered = players.filter(p => 
+            `${p.first_name} ${p.middle_name || ''} ${p.last_name || ''}`
+            .toLowerCase()
+            .includes(search.toLowerCase())
+        );
+        setFilteredPlayers(filtered);
+    };
+
+    useEffect(() => { filterPlayers(); }, [search, players]);
+
     return (
         <div className="container">
-            <h2>Players</h2>
-            <div className="grid" style={{ marginTop: 12 }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '24px' }}>Player Management</h2>
 
+            <div className="grid">
+
+                {/* Add Player Card */}
                 <Card title="Add Player">
                     <select
                         value={form.teamId}
@@ -81,15 +113,26 @@ export default function PlayersPage() {
                     <div className="form-row"><button onClick={addPlayer}>Add Player</button></div>
                 </Card>
 
+                {/* Player List Card */}
                 <Card title="Team Players">
-                    {!players ? <Loading /> : (
+                    <input
+                        className="search-box"
+                        placeholder="Search player..."
+                        value={search}
+                        onChange={e => setSearch(e.target.value)}
+                    />
+                    {loading ? <Loading /> : (
                         <ul style={{ margin: 0, paddingLeft: 16 }}>
-                            {players.length === 0 && <li className="small">No players yet</li>}
-                            {players.map(p => (
-                                <li key={p.player_id} style={{ marginBottom: 8 }}>
-                                    <strong>{p.first_name} {p.middle_name || ''} {p.last_name || ''}</strong>
-                                    <div className="small">DOB: {p.dob || '—'}</div>
-                                    <div className="small">Phone: {p.ph_number || '—'}</div>
+                            {filteredPlayers.length === 0 && <li className="small">No players found</li>}
+                            {filteredPlayers.map(p => (
+                                <li key={p.player_id} style={{ marginBottom: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 10px', borderRadius: 8, background: 'rgba(255,255,255,0.02)' }}>
+                                    <div>
+                                        <strong>{p.first_name} {p.middle_name || ''} {p.last_name || ''}</strong>
+                                        <div className="small">DOB: {p.dob || '—'} | Phone: {p.ph_number || '—'}</div>
+                                    </div>
+                                    <div style={{ display: 'flex', gap: '8px' }}>
+                                        <button className="btn-secondary" onClick={() => deletePlayer(p.player_id)}>Delete</button>
+                                    </div>
                                 </li>
                             ))}
                         </ul>

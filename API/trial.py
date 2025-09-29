@@ -7,7 +7,7 @@ def get_connection():
             host="localhost",
             port=3306,
             user="root",
-            password="pass",
+            password="admin@Yash12&sql_04",
             database="sportsdb"
         )
         return conn

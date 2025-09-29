@@ -56,3 +56,295 @@ button{
 }
 .small{ font-size:13px; color:var(--muted) }
 .h1{ font-size:20px; margin:0; }
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #0056b3; }
+
+.btn-secondary {
+  background: #ccc;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-box {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.sports-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sport-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+}
+.sport-item:hover { background: #f9f9f9; }
+.sport-name { font-weight: 600; }
+.sport-id { color: #888; font-size: 0.9em; }
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.modal-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.card h3 {
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.card input, .card select {
+    transition: border 0.3s, background 0.3s;
+}
+.card input:focus, .card select:focus {
+    border-color: var(--accent);
+    background: rgba(45, 212, 191, 0.1);
+}
+
+.btn-secondary {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn-secondary:hover { transform: scale(1.05); }
+
+.search-box {
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.02);
+    color: #fff;
+}
+.card h3 {
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.card input, .card select {
+    transition: border 0.3s, background 0.3s;
+}
+.card input:focus, .card select:focus {
+    border-color: var(--accent);
+    background: rgba(45, 212, 191, 0.1);
+}
+
+.btn-secondary {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn-secondary:hover { transform: scale(1.05); }
+
+.search-box {
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.02);
+    color: #fff;
+}
+.card h3 {
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.card input, .card select {
+    transition: border 0.3s, background 0.3s;
+}
+.card input:focus, .card select:focus {
+    border-color: var(--accent);
+    background: rgba(45, 212, 191, 0.1);
+}
+
+.btn-secondary {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.btn-secondary:hover { transform: scale(1.05); }
+
+.search-box {
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.02);
+    color: #fff;
+}
+.card h3 {
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    color: #052128;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+.btn-primary:hover { transform: scale(1.05); }
+
+.small { color: var(--muted); }
+
+.dashboard-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.dashboard-hero .overlay {
+  background: rgba(15,23,36,0.75);
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #2dd4bf, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.dashboard-hero .grid {
+  margin-top: 40px;
+}
+
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(45,212,191,0.3);
+}
+
+/* Floating icons animation */
+.floating-icon {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.7;
+  animation: float 8s ease-in-out infinite;
+}
+
+.icon-0 { left: 10%; animation-delay: 0s; }
+.icon-1 { left: 25%; animation-delay: 2s; }
+.icon-2 { left: 50%; animation-delay: 4s; }
+.icon-3 { left: 70%; animation-delay: 6s; }
+.icon-4 { left: 85%; animation-delay: 1s; }
+
+/* @keyframes float {
+  0% { transform: translateY(100vh) scale(1); opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-50vh) scale(1.2); opacity: 0; }
+} */
+
+
+
+.navbar {
+  display: flex;
+  flex-direction: column; /* stack brand and links */
+  align-items: center;    /* center all contents horizontally */
+  gap: 10px;              /* spacing between brand and links */
+  margin-top: 16px;       /* push navbar down from top */
+  padding: 12px 0;
+}
+
+.navbar .brand {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--accent);
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;        /* wrap links if window is small */
+  justify-content: center;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  transition: all 0.2s;
+}
+
+.navbar .nav-links a:hover {
+  transform: scale(1.05);
+}

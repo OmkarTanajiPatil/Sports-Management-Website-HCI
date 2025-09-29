@@ -4,54 +4,89 @@ import Card from '../components/Card';
 import Loading from '../components/Loading';
 
 export default function SportsPage() {
-    const [list, setList] = useState(null);
-    const [name, setName] = useState('');
+  const [list, setList] = useState(null);
+  const [name, setName] = useState('');
+  const [search, setSearch] = useState('');
+  const [showForm, setShowForm] = useState(false);
 
-    useEffect(() => { fetchSports(); }, []);
+  useEffect(() => { fetchSports(); }, []);
 
-    const fetchSports = async () => {
-        try {
-            const { data } = await api.get('/api/sports');
-            setList(data);
-        } catch (e) { console.error(e); setList([]); }
-    };
+  const fetchSports = async () => {
+    try {
+      const { data } = await api.get('/api/sports');
+      setList(data);
+    } catch (e) { console.error(e); setList([]); }
+  };
 
-    const add = async () => {
-        if (!name) return alert('Enter sport name');
-        try {
-            await api.post('/api/sports', { name });
-            setName('');
-            fetchSports();
-        } catch (e) { console.error(e); alert('Failed to add'); }
-    };
+  const add = async () => {
+    if (!name) return alert('Enter sport name');
+    try {
+      await api.post('/api/sports', { name });
+      setName('');
+      setShowForm(false);
+      fetchSports();
+    } catch (e) { console.error(e); alert('Failed to add'); }
+  };
 
-    return (
-        <div className="container">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h2>Sports</h2>
+  const filtered = list?.filter(s =>
+    s.sport_name.toLowerCase().includes(search.toLowerCase())
+  ) || [];
+
+  return (
+    <div className="container">
+      {/* Header Section */}
+      <div className="flex-header">
+        <h2>🏅 Sports Management</h2>
+        <button className="btn-primary" onClick={() => setShowForm(true)}>
+          ➕ Add Sport
+        </button>
+      </div>
+
+      {/* Search */}
+      <input
+        className="search-box"
+        placeholder="🔍 Search sports..."
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
+
+      <div className="grid" style={{ marginTop: 16 }}>
+        <Card title={`All Sports (${filtered.length})`}>
+          {!list ? (
+            <Loading />
+          ) : (
+            <ul className="sports-list">
+              {filtered.length === 0 && (
+                <li className="small">No sports found</li>
+              )}
+              {filtered.map(s => (
+                <li key={s.sport_id} className="sport-item">
+                  <span className="sport-name">{s.sport_name}</span>
+                  <span className="sport-id">#{s.sport_id}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+      </div>
+
+      {/* Modal for Adding Sport */}
+      {showForm && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Create New Sport</h3>
+            <input
+              placeholder="Enter sport name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            <div className="modal-actions">
+              <button className="btn-secondary" onClick={() => setShowForm(false)}>Cancel</button>
+              <button className="btn-primary" onClick={add}>Add</button>
             </div>
-
-            <div className="grid" style={{ marginTop: 12 }}>
-                <Card title="Create Sport">
-                    <input placeholder="Sport name" value={name} onChange={e => setName(e.target.value)} />
-                    <div className="form-row"><button onClick={add}>Add Sport</button></div>
-                </Card>
-
-                <Card title="All Sports">
-                    {!list ? <Loading /> : (
-                        <ul style={{ margin: 0, paddingLeft: 16 }}>
-                            {list.length === 0 && <li className="small">No sports yet</li>}
-                            {list.map(s => (
-                                <li key={s.sport_id} style={{ marginBottom: 8 }}>
-                                    <strong>{s.sport_name}</strong>
-                                    <div className="small">ID: {s.sport_id}</div>
-                                </li>
-                            ))}
-
-                        </ul>
-                    )}
-                </Card>
-            </div>
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 }
